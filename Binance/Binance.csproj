@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>iconfinder_2785522_binance_binancecoin_blockchain_coin_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+</Project>
