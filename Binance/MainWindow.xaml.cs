@@ -42,7 +42,7 @@ namespace Binance
             {
                 sum += (sum * Convert.ToInt32(txtPercent.Text) / 100);
             }
-            txtTotal.Text = $"{sum.ToString("N0")}$ - {(sum * 8.5).ToString("N0")}TL";
+            txtTotal.Text = $"{sum.ToString("N0")}$ - {(sum * 8.3).ToString("N0")}TL";
         }
 
         private void txtPrice_TextChanged(object sender, TextChangedEventArgs e)
