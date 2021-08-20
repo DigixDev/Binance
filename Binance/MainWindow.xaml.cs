@@ -31,6 +31,7 @@ namespace Binance
               {
                   this.Left = SystemParameters.WorkArea.Width - this.Width;
                   this.Top = SystemParameters.WorkArea.Height - this.Height;
+                  txtOrderPercent.Text = "5";
               };
         }
 
@@ -46,10 +47,18 @@ namespace Binance
 
         private void txtPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
+            CalculateTpSl();
+        }
+
+        private void CalculateTpSl()
+        { 
             try
             {
+                if (txtUpperPrice == null)
+                    return;
+
                 var price = Convert.ToDouble(txtCurrentPrice.Text);
-                var percent = price / 100 * Convert.ToDouble(txtOrderPercent.Text);
+                var percent = price / 100 * (Convert.ToDouble(txtOrderPercent.Text)/Convert.ToInt16(txtLeverage.Text));
                 
                 txtUpperPrice.Text = (price + percent).ToString("N4");
                 txtLowerPrice.Text = (price - percent).ToString("N4");
@@ -58,11 +67,6 @@ namespace Binance
             {
                 txtLowerPrice.Text = txtUpperPrice.Text = "";
             }
-        }
-
-        private void Update() 
-        { 
-            
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -77,6 +81,9 @@ namespace Binance
                 Clipboard.SetText(txtBox.Text);
         }
 
-       
+        private void txtOrderPercent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CalculateTpSl();
+        }
     }
 }
